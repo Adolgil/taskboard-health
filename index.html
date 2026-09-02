@@ -103,9 +103,9 @@
 
       <section id="salud-section">
         <h2>Plataforma de Cuidado de la Salud</h2>
-       <img src="img/entrenamiento.jpg"
-     alt="Ilustración de una persona realizando actividad física al aire libre" class="salud-img">
-        
+        <img src="img/entrenamiento.jpg"
+             alt="Ilustración de una persona realizando actividad física al aire libre" class="salud-img">
+        <p>Edad: 24 años | Peso: 70 kg | Estatura: 1.60 m | IMC: <span id="imc"></span></p>
 
         <h3>Agregar Nuevo Entrenamiento</h3>
         <form id="trainingForm">
@@ -137,19 +137,21 @@
         </form>
 
         <h3>Entrenamientos Realizados</h3>
-        <table id="trainingTable">
-          <caption>Historial de entrenamientos registrados</caption>
-          <thead>
-            <tr>
-              <th scope="col">Tipo</th>
-              <th scope="col">Duración</th>
-              <th scope="col">Fecha</th>
-              <th scope="col">Distancia (km)</th>
-              <th scope="col">Calorías quemadas</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+        <div class="tabla-wrapper">
+          <table id="trainingTable">
+            <caption>Historial de entrenamientos registrados</caption>
+            <thead>
+              <tr>
+                <th scope="col">Tipo</th>
+                <th scope="col">Duración</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Distancia (km)</th>
+                <th scope="col">Calorías quemadas</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
 
         <div class="summary">
           <p>Total de horas de entrenamiento: <span id="totalHours">0</span> h</p>

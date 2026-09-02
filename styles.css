@@ -32,15 +32,15 @@ header h1 {
 }
 
 .logo {
-  width: 150px;
-  height: 150px;
-  border-radius: 70%;
-  margin-bottom: 2,5%;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
 }
 
 .salud-img {
   display: block;
-  max-width: 750px;
+  max-width: 100%;
   border-radius: var(--radio);
   margin-bottom: 1rem;
   box-shadow: var(--sombra);
@@ -133,7 +133,6 @@ form button:hover {
   opacity: 0.9;
 }
 
-
 #tablero {
   display: flex;
   gap: 1rem;
@@ -191,10 +190,16 @@ form button:hover {
 }
 
 
+.tabla-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 15px;
+}
+
 table {
   width: 100%;
+  min-width: 500px;
   border-collapse: collapse;
-  margin-top: 15px;
   background-color: var(--color-superficie);
 }
 
@@ -229,6 +234,7 @@ th {
   min-width: 300px;
   max-width: 500px;
 }
+
 
 #authContainer {
   max-width: 400px;
@@ -274,6 +280,10 @@ footer {
 
 
 @media (max-width: 700px) {
+  main {
+    padding: 1rem;
+  }
+
   #tablero {
     flex-direction: column;
   }
@@ -285,5 +295,22 @@ footer {
 
   .charts {
     flex-direction: column;
+  }
+
+  .chart-container {
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  #messageBox {
+    left: 10px;
+    right: 10px;
+    top: 10px;
+    text-align: center;
   }
 }
