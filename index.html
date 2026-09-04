@@ -6,53 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TaskBoard & Health Tracker</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
   <div id="messageBox" role="status" aria-live="polite"></div>
 
-  <section id="authContainer">
-    <div id="loginBox">
-      <h2>Iniciar Sesión</h2>
-      <form id="loginForm">
-        <label for="loginUsername">Usuario:</label>
-        <input type="text" id="loginUsername" name="loginUsername" required placeholder="Tu usuario">
-
-        <label for="loginPassword">Contraseña:</label>
-        <input type="password" id="loginPassword" name="loginPassword" required minlength="4"
-               placeholder="••••••••" title="Mínimo 4 caracteres">
-
-        <button type="submit">Ingresar</button>
-      </form>
-      <p>¿No tienes cuenta? <a href="#" id="showRegister">Regístrate aquí</a></p>
-    </div>
-
-    <div id="registerContainer" style="display:none;">
-      <h2>Registro</h2>
-      <form id="registerForm">
-        <label for="registerUsername">Usuario:</label>
-        <input type="text" id="registerUsername" name="registerUsername" required placeholder="Crea un usuario">
-
-        <label for="registerEmail">Correo electrónico:</label>
-        <input type="email" id="registerEmail" name="registerEmail" required placeholder="tucorreo@ejemplo.com">
-
-        <label for="registerPassword">Contraseña:</label>
-        <input type="password" id="registerPassword" name="registerPassword" required minlength="4"
-               placeholder="••••••••" title="Mínimo 4 caracteres">
-
-        <div class="campo-checkbox">
-          <input type="checkbox" id="registerTerms" name="registerTerms" required>
-          <label for="registerTerms">Acepto los términos y condiciones</label>
-        </div>
-
-        <button type="submit">Registrarse</button>
-      </form>
-      <p>¿Ya tienes cuenta? <a href="#" id="showLogin">Iniciar sesión</a></p>
-    </div>
-  </section>
-
-  <div id="mainApp" style="display: none;">
+  <div id="mainApp">
     <header>
       <img src="img/logo.jpq.png" alt="Logo de TaskBoard & Health Dashboard" class="logo">
       <h1>TaskBoard & Health Dashboard</h1>
@@ -159,19 +118,12 @@
           <p>Calorías totales quemadas: <span id="totalCalories">0</span> kcal</p>
         </div>
 
-        <div class="charts">
-          <div class="chart-container">
-            <canvas id="distanceChart"></canvas>
-          </div>
-          <div class="chart-container">
-            <canvas id="caloriesChart"></canvas>
-          </div>
-        </div>
+      
       </section>
     </main>
 
     <footer>
-      <p>&copy; <span id="anio"></span> — TaskBoard & Health Tracker</p>
+      <p>&copy; <span id="anio"></span> — TaskBoard & Health Tracker | Desarrollado por Adolfo</p>
     </footer>
   </div>
 

@@ -11,83 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => { box.style.display = "none"; }, 2500);
   }
 
- 
-  const showRegister = document.getElementById("showRegister");
-  const showLogin = document.getElementById("showLogin");
-  const loginForm = document.getElementById("loginForm");
-  const registerForm = document.getElementById("registerForm");
-  const authContainer = document.getElementById("authContainer");
-  const mainApp = document.getElementById("mainApp");
-
-  showRegister.addEventListener("click", (e) => {
-    e.preventDefault();
-    document.getElementById("loginBox").style.display = "none";
-    document.getElementById("registerContainer").style.display = "block";
-  });
-
-  showLogin.addEventListener("click", (e) => {
-    e.preventDefault();
-    document.getElementById("loginBox").style.display = "block";
-    document.getElementById("registerContainer").style.display = "none";
-  });
-
-  registerForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const username = document.querySelector("#registerUsername").value.trim();
-    const email = document.querySelector("#registerEmail").value.trim();
-    const password = document.querySelector("#registerPassword").value;
-    const terms = document.querySelector("#registerTerms").checked;
-
-    
-    if (!username || !email || !password) {
-      showMessage("❌ Completa todos los campos antes de registrarte", "error");
-      return;
-    }
-
-    if (!terms) {
-      showMessage("❌ Debes aceptar los términos y condiciones", "error");
-      return;
-    }
-
-    let users = JSON.parse(localStorage.getItem("users") || "[]");
-    if (users.find(u => u.username === username)) {
-      showMessage("❌ El usuario ya existe", "error");
-      return;
-    }
-
-    users.push({ username, email, password });
-    localStorage.setItem("users", JSON.stringify(users));
-    showMessage("✅ Registro exitoso", "success");
-    registerForm.reset();
-    document.getElementById("loginBox").style.display = "block";
-    document.getElementById("registerContainer").style.display = "none";
-  });
-
-  loginForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const username = document.querySelector("#loginUsername").value.trim();
-    const password = document.querySelector("#loginPassword").value;
-
-    
-    if (!username || !password) {
-      showMessage("❌ Ingresa usuario y contraseña", "error");
-      return;
-    }
-
-    let users = JSON.parse(localStorage.getItem("users") || "[]");
-    const user = users.find(u => u.username === username && u.password === password);
-
-    if (user) {
-      showMessage("✅ Bienvenido/a", "success");
-      authContainer.style.display = "none";
-      mainApp.style.display = "block";
-      document.getElementById("userName").innerText = username;
-    } else {
-      showMessage("❌ Usuario o contraseña incorrectos", "error");
-    }
-  });
-
-
   const formTarea = document.getElementById("form-nueva-tarea");
   const listaPendiente = document.getElementById("lista-pendiente");
   const listaProgreso = document.getElementById("lista-progreso");
@@ -208,20 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("imc").innerText = maria.getIMC();
 
   const tbody = document.getElementById("trainingTable").querySelector("tbody");
-  const distanceCtx = document.getElementById("distanceChart").getContext("2d");
-  const caloriesCtx = document.getElementById("caloriesChart").getContext("2d");
-
-  const distanceChart = new Chart(distanceCtx, {
-    type: "bar",
-    data: { labels: [], datasets: [{ label: "Distancia (km)", data: [], backgroundColor: "rgba(54, 162, 235, 0.6)" }] },
-    options: { responsive: true, scales: { y: { beginAtZero: true } } }
-  });
-
-  const caloriesChart = new Chart(caloriesCtx, {
-    type: "bar",
-    data: { labels: [], datasets: [{ label: "Calorías", data: [], backgroundColor: "rgba(255, 99, 132, 0.6)" }] },
-    options: { responsive: true, scales: { y: { beginAtZero: true } } }
-  });
+  
 
   function updateHealthDisplay() {
     tbody.innerHTML = "";
@@ -241,17 +151,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("totalDistance").innerText = maria.getTotalDistance();
     document.getElementById("totalCalories").innerText = maria.getTotalCalories();
 
-    const labels = maria.trainings.map(t => `${t.type} (${t.date.toLocaleDateString()})`);
-    const distances = maria.trainings.map(t => t.distance);
-    const calories = maria.trainings.map(t => t.getCaloriesBurned(maria.weight).toFixed(2));
-
-    distanceChart.data.labels = labels;
-    distanceChart.data.datasets[0].data = distances;
-    distanceChart.update();
-
-    caloriesChart.data.labels = labels;
-    caloriesChart.data.datasets[0].data = calories;
-    caloriesChart.update();
   }
 
   document.querySelector("#trainingForm").addEventListener("submit", function (e) {
