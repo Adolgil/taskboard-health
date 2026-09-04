@@ -163,7 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
    
     if (!type || !duration || !date || isNaN(distance) || isNaN(factor)) {
-      showMessage("❌ Completa todos los campos del entrenamiento", "error");
+      showMessage("x Completa todos los campos del entrenamiento", "error");
       return;
     }
 
@@ -173,4 +173,41 @@ document.addEventListener("DOMContentLoaded", () => {
     updateHealthDisplay();
     this.reset();
   });
+
+  const comentariosForm = document.getElementById("comentariosForm");
+const listaComentarios = document.getElementById("listaComentarios");
+
+comentariosForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const nombre = document.getElementById("nombreComentario").value.trim();
+  const texto = document.getElementById("textoComentario").value.trim();
+
+  if (!nombre || !texto) {
+    showMessage("Completa todos los campos del comentario", "error");
+    return;
+  }
+
+  const comentario = document.createElement("div");
+  comentario.className = "comentario";
+
+  comentario.innerHTML = `
+    <strong>${nombre}</strong>
+    <p>${texto}</p>
+    <button class="btn-eliminar-comentario">Eliminar</button>
+  `;
+
+  comentario
+    .querySelector(".btn-eliminar-comentario")
+    .addEventListener("click", () => {
+      comentario.remove();
+    });
+
+  listaComentarios.appendChild(comentario);
+
+  comentariosForm.reset();
+
+  showMessage("Comentario publicado correctamente", "success");
+});
+
 });

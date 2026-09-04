@@ -120,7 +120,37 @@
 
       
       </section>
-    </main>
+    
+    
+<section id="comentarios-section">
+  <h2>Opiniones y comentarios</h2>
+
+  <form id="comentariosForm">
+    <label for="nombreComentario">Nombre:</label>
+    <input
+      type="text"
+      id="nombreComentario"
+      placeholder="Escribe tu nombre"
+      required
+    >
+
+    <label for="textoComentario">Comentario:</label>
+    <textarea
+      id="textoComentario"
+      placeholder="Escribe tu opinión sobre el proyecto"
+      rows="4"
+      required
+    ></textarea>
+
+    <button type="submit">Publicar comentario</button>
+  </form>
+
+  <div id="listaComentarios">
+    <h3>Comentarios</h3>
+  </div>
+</section>
+
+</main>
 
     <footer>
       <p>&copy; <span id="anio"></span> — TaskBoard & Health Tracker | Desarrollado por Adolfo</p>
